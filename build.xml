@@ -37,15 +37,16 @@
 	
 	<target name="junit" depends="jar">
 		<mkdir dir="${report.dir}"/>
-        <junit printsummary="yes">
+        <junit printsummary="yes" showoutput="true">
             <classpath>
-                <path refid="classpath"/>                
+                <path refid="classpath"/>    
+            	<path location="${classes.dir}"/>
             </classpath>
         	
         	 <formatter type="xml"/>
             
-            <batchtest fork="yes">
-                <fileset dir="${src.test.dir}" includes="*Test.java"/>
+            <batchtest fork="yes" todir="${report.dir}">
+                <fileset dir="${classes.dir}" includes="**/*Test.class"/>
             </batchtest>
         </junit>
     </target>
@@ -58,7 +59,7 @@
     </target>
 	
 	
-	<target name="main" depends="junit">
+	<target name="main" depends="junitreport">
 		<delete dir="${classes.dir}"/>
 	</target>
 
