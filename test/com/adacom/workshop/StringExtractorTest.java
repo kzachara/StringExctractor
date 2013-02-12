@@ -4,15 +4,13 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import junit.framework.Assert;
+import junit.framework.TestCase;
 
-import org.junit.Test;
 
-
-public class TestStringExtractor {
+public class StringExtractorTest extends TestCase {
 	
 	
-	@Test
-	public void testExecution() throws Exception {
+	public void testStringExtractor() throws Exception {
 		String output = "samples/output.txt";
 		StringExtractor.main(new String[] {
 				"samples/input1.txt",
@@ -25,8 +23,25 @@ public class TestStringExtractor {
 		
 		Assert.assertEquals(
 				readFileToString(new File("samples/output-expected.txt")), 
-				readFileToString(outputFile));
+				readFileToString(outputFile));		
+	}
+	
+
+	public void testStringExtractorTwoFiles() throws Exception {
+		String output = "samples/outputnew.txt";
 		
+		StringExtractorTwoFiles.main(new String[] {
+				"samples/input1.txt",
+				"samples/input2.txt",
+				output
+		});
+		
+		File outputFile = new File(output);
+		Assert.assertTrue(outputFile.exists());		
+		
+		Assert.assertEquals(
+				readFileToString(new File("samples/output-expected.txt")), 
+				readFileToString(outputFile));		
 	}
 	
 	

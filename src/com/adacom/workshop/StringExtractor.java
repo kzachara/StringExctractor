@@ -14,6 +14,7 @@ import java.util.TreeSet;
  * and writes in an output file the words that are common in all input files, ordered
  * lexicographically.  
  * @author Konstantinos Zacharakis (kzachara@gmail.com) 
+ * @since 0.1
  *
  */
 public class StringExtractor {
@@ -71,9 +72,7 @@ public class StringExtractor {
 			i++;			
 		}
 		
-		writeCommonWordsInFile(outputFile, commonWords);
-		
-			
+		writeCommonWordsInFile(outputFile, commonWords);			
 	}
 	
 	/**
